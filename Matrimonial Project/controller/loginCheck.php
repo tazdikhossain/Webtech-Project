@@ -1,7 +1,5 @@
 <?php
-
     session_start();
-
     require_once('../model/userModel.php');
 
 
@@ -13,27 +11,35 @@
     }else{
         
         $status = login($username, $password);
+        
         if($status)
-        {
-            $_SESSION['flag'] = "true";
+        {   
             
-            /*if(["usertype"]=="user"|| "")
+
+            $row=userrole($username);
+
+            if($row['role']=="user")
             {
+                $_SESSION['user']=true;
                 header('location: ../view/dashboardGeneralUser.php');
+
             }
-            elseif(["usertype"]=="admin")
+            elseif($row['role']=="admin")
             {
+                $_SESSION['admin']=true;
                 header('location: ../view/dashboardAdmin.php');
             }
-            elseif(["usertype"]=="host")
+            elseif($row['role']=="host")
             {
+                $_SESSION['host']=true;
                 header('location: ../view/dashboardHost.php');
-            }*/
-            header('location: ../view/dashboardGeneralUser.php');
+            }
+            //header('location: ../view/dashboardGeneralUser.php');
             
             }
             else{
             echo "invaid user!";
+            
             
         }
     } 

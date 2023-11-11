@@ -1,5 +1,7 @@
 <?php
 
+    
+
 ?>
 
 <html lang="en">
@@ -38,7 +40,7 @@
                     <table width="600px" height="100%">
                         <tr>
                             <td>
-                                <form action="../controller/emailCheck.php" method="post">
+                                <form action="../controller/forgotPasswordCheck.php" method="post">
                                     <fieldset>
                                         <legend>
                                             Forgot Password
@@ -46,10 +48,16 @@
                                         <table width="100%">
 
                                             <tr>
-                                                <td>Enter Email</td>
-                                                <td>:
-                                                    <input type="email" name="email" value="">
+                                                <td>New Password</td>
+                                                <td>:<input type="password" name="newPassword" value="">
                                                 </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Retype New Password</td>
+                                                <td>:<input type="password" name="confirmPassword" value="">
+                                                </td>
+
                                             </tr>
 
 

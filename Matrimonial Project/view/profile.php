@@ -1,5 +1,7 @@
 <?php
-
+    require_once('../controller/sessionCheckUser.php');
+    require_once('../model/userModel.php');
+    $user = getUser($_SESSION['id']);
 ?>
 
 <html lang="en">
@@ -10,29 +12,26 @@
 
 <body>
     <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="1">
+
         <tr height="40px">
             <td colspan="2">
                 <header>
                     <table width="100%">
                         <tr>
                             <td>
-                                <img src="" alt="">
+                                <img src="" alt=""> Logged in
                             </td>
                             <td align="right">
-                                Logged in as
-                                <a href="index.php"><?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ""  ?></a>|
-                                <a href="logout.php">Logout</a>
+                                <a href="searchBar.php">Search Bar</a>|    
                             </td>
                         </tr>
                     </table>
                 </header>
             </td>
-
-
-
-
-
         </tr>
+
+
+
         <tr>
             <td width="220px">
                 <table height="100%" width="100%" border="0" cellspacing="0">
@@ -40,18 +39,15 @@
                         <td height="200px">
                             <h4>General User Account</h4>
                             <hr width="200px">
-                            <ul>
-                                <li><a href="view/dashboardGeneralUser.php">Dashboard</a></li>
-                                <li><a href="profile.php">View Profile</a></li>
-                                <li><a href="edit.php">Edit Profile</a></li>
-                                <li><a href="delete.php">Delete Profile</a></li> 
-                                <li><a href="picture.php">Change Profile Picture</a></li>
-                                <li><a href="changePassword.php">Change Password</a></li>
-                                <li><a href="Number of CV Downloads">Number of CV Downloads</a></li> 
-                                <li><a href="logout.php">Logout</a></li>
-                            </ul>
-
-
+                                <ul>
+                                    <li><a href="dashboardGeneralUser.php">Dashboard</a></li>
+                                    <li><a href="profile.php">View Profile</a></li>
+                                    <li><a href="edit.php">Edit Profile</a></li>
+                                    <li><a href="picture.php">Change Profile Picture</a></li>
+                                    <li><a href="changePassword.php">Change Password</a></li>
+                                    <!-- <li><a href="Number of CV Downloads">Number of CV Downloads</a></li>  -->
+                                    <li><a href="logout.php">Logout</a></li>
+                                </ul>
                         </td>
                     </tr>
                     <tr>
@@ -71,11 +67,11 @@
                             <tr>
                                 <td>Name</td>
                                 <td>:
-                                    <?php echo isset($_COOKIE['name']) ? $_COOKIE['name'] : ''
+                                    <?php echo $user['username']; 
                                     ?>
                                 </td>
                                 <td width="200px" rowspan="4" align="center">
-                                    <img src="pfp.png" alt="pfp">
+                                    
 
                                 </td>
                             </tr>
@@ -89,7 +85,7 @@
                             <tr>
                                 <td>Email</td>
                                 <td>:
-                                    <?php echo isset($_COOKIE['email']) ? $_COOKIE['email'] : ''
+                                    <?php echo $user['email'];
                                     ?>
                                 </td>
 
@@ -104,32 +100,27 @@
                             <tr>
                                 <td>Gender</td>
                                 <td>:
-                                    <?php echo isset($_COOKIE['gender']) ? $_COOKIE['gender'] : ''
+                                    <?php echo $user['gender'];
                                     ?>
                                 </td>
 
                             </tr>
+                     
 
-
-                            <tr>
+                              <tr>
                                 <td colspan="2">
                                     <hr>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Date of Birth</td>
+                                <td>Phone Number</td>
                                 <td>:
-                                    <?php echo isset($_COOKIE['day']) ? $_COOKIE['day'] : ''
-                                    ?>/
-                                    <?php echo isset($_COOKIE['month']) ? $_COOKIE['month'] : ''
-                                    ?>/
-                                    <?php echo isset($_COOKIE['year']) ? $_COOKIE['year'] : ''
+                                    <?php echo $user['phoneNumber'];
                                     ?>
                                 </td>
-                                <td align="center"><a href="picture.php">Change</a></td>
+                                
 
                             </tr>
-
 
 
                             <tr>
@@ -139,12 +130,12 @@
                             </tr>
 
 
-                            <tr>
+                        <!--    <tr>
                                 <td><a href="edit.php">Edit Profile</a></td>
                                 <td>
 
                             </tr>
-
+-->
 
 
                         </table>
@@ -154,14 +145,20 @@
 
         </tr>
 
+
         <tr height="40px">
             <td colspan="2" align="center">
-
                 <footer>
-                    Copyright &copy; 2017
+                    <a href="">About Us<br></a>
+                    <a href="">Helpline<br></a>
+                    <a href="">FAQ<br></a>
+                    <a href="">Terms and Condition<br></a>
+                    Copyright &copy; 2023
                 </footer>
             </td>
         </tr>
+
+        
     </table>
 
 </body>

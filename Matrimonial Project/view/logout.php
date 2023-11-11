@@ -1,8 +1,10 @@
 <?php
 
-setcookie('auth', 'true', time() - 10, '/');
-header('location: index.php');
-
+session_start();
+unset($_SESSION['user']);
+unset($_SESSION['admin']);
+unset($_SESSION['host']);
+header('location: ../view/login.php');
 
 ?>
 <html>

@@ -18,7 +18,7 @@ if($oldPassword==$currentPassword)
     {
         $updatePassword = updatePassword($_SESSION['id'], $newPassword );
         if($updatePassword==true)
-        { header('location:../view/dashboardGeneralUser.php');}
+        { header('location:../view/dashboardAdmin.php');}
         else{
             echo "Somthing went wrong";
         }

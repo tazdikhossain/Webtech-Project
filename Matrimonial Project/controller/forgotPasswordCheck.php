@@ -1,24 +1,25 @@
 <?php
 
-session_start();
+
+
 require_once('../model/userModel.php');
 
-$user = getUser($_SESSION['id']);
-$oldPassword = $user['password'];
 
 
-$currentPassword=$_REQUEST['currentPassword'];
 $newPassword=$_REQUEST['newPassword'];
 $confirmPassword=$_REQUEST['confirmPassword'];
 
-if($oldPassword==$currentPassword)
-{
 
     if($newPassword==$confirmPassword)
     {
-        $updatePassword = updatePassword($_SESSION['id'], $newPassword );
+        session_start();
+
+        $updatePassword = updatePassword($_SESSION['userid'], $newPassword );
         if($updatePassword==true)
-        { header('location:../view/dashboardGeneralUser.php');}
+        {   
+            //echo "success";
+            header('location:../view/login.php');
+        }
         else{
             echo "Somthing went wrong";
         }
@@ -28,10 +29,7 @@ if($oldPassword==$currentPassword)
         echo "Password doesnt match";
     }
 
-}
-else{
-    echo "CurrentPassword doesnt match";
-}
+
 
 
     

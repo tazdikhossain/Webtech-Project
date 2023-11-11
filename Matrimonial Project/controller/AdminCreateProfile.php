@@ -1,5 +1,6 @@
 <?php
-//session_start();
+
+require_once('../controller/sessionCheckAdmin.php');
 
 // initialization
 $isValidUsername = true;
@@ -13,6 +14,7 @@ $emailError = "";
 $phoneNumberError = "";
 $genderError = "";
 
+
 if (isset($_REQUEST['submit'])) {
 
     // Data collect from registration form
@@ -22,7 +24,8 @@ if (isset($_REQUEST['submit'])) {
     $confirmPassword = $_REQUEST['confirmPassword'];
     $email = $_REQUEST['email'];
     $phoneNumber = $_REQUEST['phoneNumber'];
-    $gender = $_REQUEST['gender'];
+    $gender = isset($_REQUEST['gender']) ? $_REQUEST['gender'] : '';
+    $role = isset($_REQUEST['role']) ? $_REQUEST['role'] : '';
 
     // Name validation
     if (empty($name)) {
@@ -37,7 +40,7 @@ if (isset($_REQUEST['submit'])) {
             $char = $username[$i];
 
             if (!ctype_alnum($char) && $char != '.' && $char != '-' && $char != '_') {
-                $usernameError = "Username can contain alphanumeric characters, period, dash, or underscore only";
+                $usernameError = "Username must contain alphanumeric characters, period, dash, or underscore only";
                 break;
             }
         }
@@ -83,10 +86,10 @@ if (isset($_REQUEST['submit'])) {
         $genderError = "Please select your gender";
     }
 
-    // If all validations pass, insert user data into database
+    //All validations pass, insert user data into database
     if ($isValidUsername && $isValidPassword && empty($nameError) && empty($usernameError) && empty($passwordError) && empty($confirmPasswordError) && empty($emailError) && empty($phoneNumberError) && empty($genderError)) {
         $con = mysqli_connect('127.0.0.1', 'root', '', 'webtech');
-        $sql = "insert into users (username,password,email, role, phoneNumber,gender) values('{$username}','{$password}','{$email}','user','{$phoneNumber}','{$gender}')";
+        $sql = "insert into users (username,password,email, role, phoneNumber,gender) values('{$username}','{$password}','{$email}','{$role}','{$phoneNumber}','{$gender}')";
         $result = mysqli_query($con, $sql);
 
         if ($result) {
@@ -97,34 +100,29 @@ if (isset($_REQUEST['submit'])) {
     }
 }
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <title>Registration</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
 <body>
     <table width="100%" height="100%">
-        <tr height="40px">
+        
+        <tr height="60px">
             <header>
-
                 <td>
-                    <img src="" alt="">
+                    <img src="" alt=""> <a href="../view/dashboardAdmin.php">Back</a>
                 </td>
-
                 <td align="right">
-                <!--    <a href="index.php">Home</a>|
-                    <a href="login.php">Login</a>|
-                    <a href="registration.php">Registration</a> -->
-                    <a href="login.php">Login</a>
+                    <!-- <a href="index.php">Home</a>|
+                    <a href="login.php">Login</a> -->
                 </td>
-
                 </td>
-
             </header>
         </tr>
+
 
         <tr>
             <td colspan="2" height="2px">
@@ -135,13 +133,17 @@ if (isset($_REQUEST['submit'])) {
         <tr>
             <td colspan="2" align="center">
                 <main>
-                    <table width="600px" height="100%">
+                    <table width="700px" >
                         <tr>
                             <td>
                                 <form method="post" action="">
                                     <fieldset>
-                                        <legend>Registration</legend>
+                                        <legend>
+                                            Registration
+                                        </legend>
+
                                         <table width="100%">
+
                                             <tr>
                                                 <td>Name</td>
                                                 <td>:
@@ -177,11 +179,13 @@ if (isset($_REQUEST['submit'])) {
                                                     <span class="error"><?= $usernameError ?></span>
                                                 </td>
                                             </tr>
+
                                             <tr>
                                                 <td colspan="2">
                                                     <hr>
                                                 </td>
                                             </tr>
+
                                             <tr>
                                                 <td>Password</td>
                                                 <td>:
@@ -203,6 +207,7 @@ if (isset($_REQUEST['submit'])) {
                                                     <span class="error"><?= $confirmPasswordError ?></span>
                                                 </td>
                                             </tr>
+
                                             <tr>
                                                 <td colspan="2">
                                                     <hr>
@@ -242,12 +247,30 @@ if (isset($_REQUEST['submit'])) {
 
                                             <tr>
                                                 <td colspan="2">
+                                                    <fieldset>
+                                                        <legend>User Type</legend>
+                                                        <input type="radio" name="role" value="user">User
+                                                        <input type="radio" name="role" value="host">Host
+                                                        <input type="radio" name="role" value="Admin">Admin
+                                                    </fieldset>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
+                                                    <hr>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
                                                     <input type="submit" value="Submit" name="submit">
                                                     <input type="reset" value="Reset">
                                                 </td>
                                             </tr>
 
                                         </table>
+
                                     </fieldset>
                                 </form>
                             </td>
@@ -257,19 +280,19 @@ if (isset($_REQUEST['submit'])) {
             </td>
         </tr>
 
-        <tr height="40px">
-                <td colspan="2">
-                    <hr>
-                    <footer align="center">
-                        <a href="">About Us<br></a>
-                        <a href="">Helpline<br></a>
-                        <a href="">FAQ<br></a>
-                        <a href="">Terms and Condition<br></a>
-                        Copyright &copy; 2023
 
-                    </footer>
-                </td>
-            </tr> 
+        <tr height="60px">
+            <td colspan="2">
+                <hr>
+                <footer align="center">
+                    <!-- <a href="">About Us<br></a>
+                    <a href="">Helpline<br></a>
+                    <a href="">FAQ<br></a>
+                    <a href="">Terms and Condition<br></a>
+                    Copyright &copy; 2023 -->
+                </footer>
+            </td>
+        </tr>
     </table>
 
 </body>

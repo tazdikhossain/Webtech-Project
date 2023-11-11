@@ -1,5 +1,7 @@
 <?php
-    session_start();
+       require_once('../controller/sessionCheckHost.php');
+       require_once('../model/db.php');
+       require_once('../model/userModel.php');
 ?>
 
 <html lang="en">
@@ -19,9 +21,7 @@
                                 <img src="" alt="">
                             </td>
                             <td align="right">
-                                Logged in as
-                                <a href="index.php"><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ""  ?></a>|
-                                <a href="logout.php">Logout</a>
+                                Logged
                             </td>
                         </tr>
                     </table>
@@ -41,8 +41,12 @@
                             <h4> Host Account</h4>
                             <hr width="200px">
                             <ul>
-                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="dashboarHost.php">Dashboard</a></li>
                                 <li><a href="">User Profile</a></li>
+                                <li><a href="HostProfile.php"> Profile</a></li>
+                                <li><a href="HostEdit.php">Edit Profile</a></li>
+                                <li><a href="HostPicture.php">Change Profile Picture</a></li>
+                                <li><a href="HostChangePassword.php">Change Password</a></li>
                                 <li><a href="">Write Blog and Advices</a></li>
                                 <li><a href="">Write Event Management</a></li>
                                 <li><a href="logout.php">Logout</a></li>
@@ -58,11 +62,7 @@
 
             </td>
             <td>
-                <b>Welcome <?php if (isset($_SESSION['username'])) {
-                                echo $_SESSION['username'];
-                            } else {
-                                echo "";
-                            } ?></b>
+                <b>Welcome 
 
             </td>
 

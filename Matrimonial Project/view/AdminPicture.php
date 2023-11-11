@@ -1,5 +1,5 @@
 <?php
-    require_once('../controller/sessionCheckUser.php'); 
+    require_once('../controller/sessionCheckAdmin.php'); // This line requires the sessionCheck.php file, which checks if the user is logged in.
     require_once('../model/userModel.php'); // This line requires the userModel.php file, which contains the functions for managing users.
     $data= getUser($_SESSION['id']);
 ?>
@@ -18,45 +18,52 @@
                     <table width="100%">
                         <tr>
                             <td>
-                                <img src="" alt=""> Logged in
+                                <img src="" alt="">
                             </td>
                             <td align="right">
-                                <a href="searchBar.php">Search Bar</a>|    
+                                Logged in 
                             </td>
                         </tr>
                     </table>
                 </header>
             </td>
+
+
+
+
+
         </tr>
-
-
         <tr>
             <td width="220px">
                 <table height="100%" width="100%" border="0" cellspacing="0">
                     <tr>
                         <td height="200px">
-                            <h4>General User Account</h4>
+                            <h4>Admin Account</h4>
                             <hr width="200px">
                             <ul>
-                                <li><a href="dashboardGeneralUser.php">Dashboard</a></li>
-                                <li><a href="profile.php">View Profile</a></li>
-                                <li><a href="edit.php">Edit Profile</a></li>
-                                <li><a href="picture.php">Change Profile Picture</a></li>
-                                <li><a href="changePassword.php">Change Password</a></li>
-                                <!-- <li><a href="Number of CV Downloads">Number of CV Downloads</a></li>  -->
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="AdminProfile.php"> Profile</a></li>
+                                <li><a href="AdminEdit.php">Edit Profile</a></li>
+                                <li><a href="AdminPicture.php">Change Profile Picture</a></li>
+                                <li><a href="AdminChangePassword.php">Change Password</a></li>
+                                <li><a href="AdminViewUsers.php">Manage User </a></li>
+                                <li><a href="AdminDeleteUser.php">Delete Profile</a></li> 
+                                <li><a href="">Recent CV's</a></li>
+                                <li><a href="">Manage Host</a></li>
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>
+
+
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                     </tr>
                 </table>
+
             </td>
-
-
             <td>
-                <form method="post" action="../controller/fileCheck.php" enctype="multipart/form-data">
+                <form method="post" action="../controller/AdminPictureCheck.php" enctype="multipart/form-data">
                     <fieldset>
                         <legend>
                             <b>Change Profile Picture</b>
@@ -91,6 +98,9 @@
                                 <td>
 
                             </tr>
+
+
+
                         </table>
                     </fieldset>
                 </form>
@@ -100,12 +110,9 @@
 
         <tr height="40px">
             <td colspan="2" align="center">
+
                 <footer>
-                    <a href="">About Us<br></a>
-                    <a href="">Helpline<br></a>
-                    <a href="">FAQ<br></a>
-                    <a href="">Terms and Condition<br></a>
-                    Copyright &copy; 2023
+                    Copyright &copy; 2017
                 </footer>
             </td>
         </tr>

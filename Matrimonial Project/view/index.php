@@ -12,15 +12,15 @@
 
     <table width="100%" height="100%">
 
-        <tr height="40px">
+        <tr height="60px">
             <header>
                 <td>
                     <img src="" alt="">
                 </td>
                 <td align="right">
                     <a href="index.php">Home</a>|
-                    <a href="view/login.php">Login</a>|
-                    <a href="view/registration.php">Registration</a>|        
+                    <a href="login.php">Login</a>|
+                    <a href="registration.php">Registration</a>|        
                 </td>                
             </header>
         </tr>
@@ -49,7 +49,7 @@
         </tr>
 
 
-        <tr height="40px">
+        <tr height="60px">
             <td colspan="2">
                 <hr>
                 <footer align="center">    

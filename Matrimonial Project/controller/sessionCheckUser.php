@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if(!isset($_SESSION['flag'])){
+    if($_SESSION['user']!=true){
         header('location: ../view/login.php');
     }
 ?>
