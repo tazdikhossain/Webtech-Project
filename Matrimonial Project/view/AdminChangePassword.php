@@ -46,7 +46,8 @@
                                 <li><a href="AdminPicture.php">Change Profile Picture</a></li>
                                 <li><a href="AdminChangePassword.php">Change Password</a></li>
                                 <li><a href="AdminViewUsers.php">Manage User </a></li>
-                                <li><a href="AdminDeleteUser.php">Delete Profile</a></li> 
+                                <li><a href="AdminDeleteUser.php">Delete Profile</a></li>
+                                <li><a href="HostSalary.php">Salary Sheet</a></li> 
                                 <li><a href="">Recent CV's</a></li>
                                 <li><a href="">Manage Host</a></li>
                                 <li><a href="logout.php">Logout</a></li>

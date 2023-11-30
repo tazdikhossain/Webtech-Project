@@ -1,9 +1,8 @@
 <?php
 
-require_once('../controller/sessionCheckAdmin.php'); // This line requires the sessionCheck.php file, which checks if the user is logged in.
-require_once('../model/userModel.php'); // This line requires the userModel.php file, which contains the functions for managing users.
+require_once('../controller/sessionCheckAdmin.php'); 
+require_once('../model/userModel.php'); 
 
-//$id = $_GET['id']; // This line gets the ID of the user from the URL query string.
 $user = getUser($_SESSION['id']); // This line calls the getUser() function from the userModel.php file to get the user with the given ID from the database.
 
 
@@ -27,7 +26,7 @@ $user = getUser($_SESSION['id']); // This line calls the getUser() function from
                                 <img src="" alt="">
                             </td>
                             <td align="right">
-                                Logged in as
+                                Logged in 
                                 <a href="index.php"></a>|
                                 
                             </td>
@@ -55,7 +54,8 @@ $user = getUser($_SESSION['id']); // This line calls the getUser() function from
                                 <li><a href="AdminPicture.php">Change Profile Picture</a></li>
                                 <li><a href="AdminChangePassword.php">Change Password</a></li>
                                 <li><a href="AdminViewUsers.php">Manage User </a></li>
-                                <li><a href="AdminDeleteUser.php">Delete Profile</a></li> 
+                                <li><a href="AdminDeleteUser.php">Delete Profile</a></li>
+                                <li><a href="HostSalary.php">Salary Sheet</a></li> 
                                 <li><a href="">Recent CV's</a></li>
                                 <li><a href="">Manage Host</a></li>
                                 <li><a href="logout.php">Logout</a></li>

@@ -62,8 +62,10 @@ $user = getUser($_SESSION['id']);
                 </table>
 
             </td>
+
+
             <td>
-                <form method="post" action="../controller/editCheck.php" enctype="">
+                <form id="editForm" method="post" action="../controller/editCheck.php" enctype="">
                     <fieldset>
                         <legend>
                             <b>Edit Profile</b>
@@ -71,9 +73,10 @@ $user = getUser($_SESSION['id']);
                         <table width="100%">
                             <input type="hidden" name="id" value="<?= $user['id']  ?>" 
             
+                            
                             <tr>
                                 <td>Name</td>
-                                <td>:<input type="name" name="username" value="<?=$user['username']  ?>" />
+                                <td>:<input type="name" id="username" name="username" value="<?=$user['username']  ?>" />
                                 </td>
 
                             </tr>
@@ -86,7 +89,7 @@ $user = getUser($_SESSION['id']);
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>:<input type="email" name="email" value="<?=$user['email']  ?>" />
+                                <td>:<input type="email" id="email" name="email" value="<?=$user['email']  ?>" />
                                     
                                 </td>
 
@@ -98,9 +101,9 @@ $user = getUser($_SESSION['id']);
                                     <hr>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td>Gender</td>
-                                <td>:<input type="text" name="gender" value="<?=$user['gender']  ?>" />
+                                <td>:<input type="text" name="gender" value="" />
                                     
                                     
                                 </td>
@@ -112,10 +115,10 @@ $user = getUser($_SESSION['id']);
                                 <td colspan="2">
                                     <hr>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td>Phone Number</td>
-                                <td>:<input type="text" name="phoneNumber" value="<?=$user['phoneNumber']  ?>" />
+                                <td>:<input type="text" id="phoneNumber" name="phoneNumber" value="<?=$user['phoneNumber']  ?>" />
                                 
                                     
                                 </td>
@@ -134,12 +137,95 @@ $user = getUser($_SESSION['id']);
 
                             <tr>
                                 <td>
-                                    <input type="submit" value="submit" name="submit" />
+                                    <input type="submit" value="submit" name="submit" onclick=" validateForm()" />
 
                                 </td>
                                 <td>
 
                             </tr>
+
+                            <script>
+
+                                function validateForm() {
+                                    let username = document.getElementById('username').value;
+                                    let email = document.getElementById('email').value;
+                                    let phoneNumber = document.getElementById('phoneNumber').value;
+
+                                    if (isEmpty(username)) {
+                                        alert('Username cannot be empty');
+                                        return false;
+                                    }
+
+                                    if (isEmpty(email)) {
+                                        alert('Email cannot be empty');
+                                        return false;
+                                    }
+
+                                    if (isEmpty(phoneNumber)) {
+                                        alert('Phone Number cannot be empty');
+                                        return false;
+                                    }
+
+                                    // Validate username
+                                    if (!isValidUsername(username)) {
+                                        alert('Invalid Username. Please check the requirements.');
+                                        return false;
+                                    }
+
+                                    // Validate phone number
+                                    if (!isValidPhoneNumber(phoneNumber)) {
+                                        alert('Invalid Phone Number. Please try again.');
+                                        return false;
+                                    }
+
+                                    submitForm();
+                                    return false;
+                                }
+
+                                function isEmpty(value) {
+                                    return value === '';
+                                }
+
+                                function isValidUsername(username) {
+                                    // Username must contain at least two characters
+                                    if (username.length < 2) {
+                                        return false;
+                                    }
+
+                                    // Username can contain alphanumeric characters, period, dash, or underscore only
+                                    for (let i = 0; i < username.length; i++) {
+                                        let char = username[i];
+                                        if (!((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || (char >= '0' && char <= '9') || char === '.' || char === '-' || char === '_')) {
+                                            return false;
+                                        }
+                                    }
+
+                                    return true;
+                                }
+
+                                function isValidPhoneNumber(phoneNumber) {
+                                    // Specific phone number validation
+                                    return phoneNumber.length === 11 && phoneNumber[0] === '0' && phoneNumber[1] === '1';
+                                }
+
+                                function submitForm() {
+                                    let xhttp = new XMLHttpRequest();
+                                    let formData = new FormData(document.getElementById('editForm'));
+
+                                    xhttp.open('POST', '../controller/editCheck.php', true);
+                                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                                    xhttp.send('username=' + username)
+                                    xhttp.send('email=' + email)
+                                    xhttp.send('phoneNumber=' + phoneNumber)
+                                    xhttp.onreadystatechange = function () {
+                                        if (this.readyState == 4 && this.status == 200) {
+                                            document.getElementById('head').innerHTML = this.responseText;
+                                        }
+                                    };
+                                }
+
+                            </script>
+
 
 
 
@@ -164,6 +250,12 @@ $user = getUser($_SESSION['id']);
         
     </table>
 
+
+
 </body>
+
+
+
+
 
 </html>

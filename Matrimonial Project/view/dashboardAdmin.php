@@ -65,8 +65,13 @@
 
             </td>
             <td>
-                <b>Welcome 
-
+                <h2> 
+                        <b> 
+                            &nbsp;&nbsp;&nbsp;Welcome to Admin Dashboard. our esteemed matrimonial platform, dedicated to facilitating meaningful connections.<br> 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With a focus on compatibility and shared values, we provide a sophisticated space for individuals seeking a committed,<br> 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long-term relationship. Embark on this journey with us, where professionalism meets matters of the heart.<br>     
+                        </b>
+                </h2> 
             </td>
 
         </tr>

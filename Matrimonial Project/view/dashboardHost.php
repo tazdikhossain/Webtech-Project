@@ -41,7 +41,7 @@
                             <h4> Host Account</h4>
                             <hr width="200px">
                             <ul>
-                                <li><a href="dashboarHost.php">Dashboard</a></li>
+                                <li><a href="dashboardHost.php">Dashboard</a></li>
                                 <li><a href="">User Profile</a></li>
                                 <li><a href="HostProfile.php"> Profile</a></li>
                                 <li><a href="HostEdit.php">Edit Profile</a></li>
@@ -62,8 +62,13 @@
 
             </td>
             <td>
-                <b>Welcome 
-
+                <h2> 
+                        <b> 
+                            &nbsp;&nbsp;&nbsp;Welcome to Host Dashboard. our esteemed matrimonial platform, dedicated to facilitating meaningful connections.<br> 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With a focus on compatibility and shared values, we provide a sophisticated space for individuals seeking a committed,<br> 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long-term relationship. Embark on this journey with us, where professionalism meets matters of the heart.<br>     
+                        </b>
+                </h2> 
             </td>
 
         </tr>

@@ -121,6 +121,8 @@ function filterTable($query) {
     $con = getConnection();
     $filter_Result = mysqli_query($con, $query);
     return $filter_Result;
+
+
 }
 
 

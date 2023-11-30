@@ -40,7 +40,7 @@ require_once('../controller/sessionCheckHost.php');
                             <h4>Host Account</h4>
                             <hr width="200px">
                             <ul>
-                                <li><a href="dashboarHost.php">Dashboard</a></li>
+                                <li><a href="dashboardHost.php">Dashboard</a></li>
                                 <li><a href="">User Profile</a></li>
                                 <li><a href="HostProfile.php"> Profile</a></li>
                                 <li><a href="HostEdit.php">Edit Profile</a></li>

@@ -41,13 +41,14 @@
                             <h4>Admin Account</h4>
                             <hr width="200px">
                             <ul>
-                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="dashboardAdmin.php">Dashboard</a></li>
                                 <li><a href="AdminProfile.php"> Profile</a></li>
                                 <li><a href="AdminEdit.php">Edit Profile</a></li>
                                 <li><a href="AdminPicture.php">Change Profile Picture</a></li>
                                 <li><a href="AdminChangePassword.php">Change Password</a></li>
                                 <li><a href="AdminViewUsers.php">Manage User </a></li>
                                 <li><a href="AdminDeleteUser.php">Delete Profile</a></li> 
+                                <li><a href="HostSalary.php">Salary Sheet</a></li>
                                 <li><a href="">Recent CV's</a></li>
                                 <li><a href="">Manage Host</a></li>
                                 <li><a href="logout.php">Logout</a></li>

@@ -15,6 +15,7 @@ if (isset($_REQUEST['search'])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +29,7 @@ if (isset($_REQUEST['search'])) {
                         <header>
                             <table width="100%">
                                 <tr>
+                                    <center><h1>All Biodata</h1>
                                     <td align="center">
                                     <input type="text" name="valueToSearch" placeholder=" Search"><br><br>
                                     <input type="submit" name="search" value="Search"><br><br>
@@ -46,14 +48,16 @@ if (isset($_REQUEST['search'])) {
             <th>User Name</th>
             <th>Email</th>
             <th>Address</th>
+            <th>Action</th>
         </tr>
 
-        <?php while ($row = mysqli_fetch_array($search_result)): ?>
+        <?php while ($row = mysqli_fetch_array(result)): ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['username']; ?></td>
                 <td><?php echo $row['email']; ?></td>
                 <td><?php echo $row['address']; ?></td>
+                <td><a href="showDetails.php">Show Details</a></td>
             </tr>
         <?php endwhile; ?>
     </table>

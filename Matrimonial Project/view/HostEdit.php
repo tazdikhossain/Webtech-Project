@@ -27,7 +27,7 @@ $user = getUser($_SESSION['id']); // This line calls the getUser() function from
                                 <img src="" alt="">
                             </td>
                             <td align="right">
-                                Logged in as
+                                Logged in 
                                 <a href="index.php"></a>|
                                 
                             </td>
@@ -49,7 +49,7 @@ $user = getUser($_SESSION['id']); // This line calls the getUser() function from
                             <h4>Host Account</h4>
                             <hr width="200px">
                             <ul>
-                                <li><a href="dashboarHost.php">Dashboard</a></li>
+                                <li><a href="dashboardHost.php">Dashboard</a></li>
                                 <li><a href="">User Profile</a></li>
                                 <li><a href="HostProfile.php"> Profile</a></li>
                                 <li><a href="HostEdit.php">Edit Profile</a></li>
@@ -161,7 +161,11 @@ $user = getUser($_SESSION['id']); // This line calls the getUser() function from
             <td colspan="2" align="center">
 
                 <footer>
-                    Copyright &copy; 2017
+                    <a href="">About Us<br></a>
+                    <a href="">Helpline<br></a>
+                    <a href="">FAQ<br></a>
+                    <a href="">Terms and Condition<br></a>
+                    Copyright &copy; 2023
                 </footer>
             </td>
         </tr>
