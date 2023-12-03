@@ -1,70 +1,108 @@
 <?php
-require_once('../model/userModel.php');
+require_once('../model/searchmodel.php');
 require_once('../controller/sessionCheckUser.php');
-
-
-
-if (isset($_REQUEST['search'])) {
-    $valueToSearch = $_REQUEST['valueToSearch'];
-    // search in all table columns using concat MySQL function
-    $query = "SELECT * FROM `search` WHERE CONCAT(`id`, `username`, `email`,`address` ) LIKE '%" . $valueToSearch . "%'";
-    $search_result = filterTable($query);
-} else {
-    $query = "SELECT * FROM `search`";
-    $search_result = filterTable($query);
-}
 ?>
 
 
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Search Bar</title>
+    <meta charset="UTF-8">
+    <title>Search Biodata</title>
 </head>
-<body>
-
-<form action="searchBar.php" method="post">
-        <tr height="40px">
-                    <td colspan="2">
-                        <header>
-                            <table width="100%">
-                                <tr>
-                                    <center><h1>All Biodata</h1>
-                                    <td align="center">
-                                    <input type="text" name="valueToSearch" placeholder=" Search"><br><br>
-                                    <input type="submit" name="search" value="Search"><br><br>
-                                    <a href="dashboardGeneralUser.php">Back</a> <br><br>
-                                    </td>
-                                </tr>
-                            </table>
-                        </header>
-                    </td>
+<body bgcolor="">
+    <table width="100%" bgcolor="" border="0" cellspacing="0" cellpadding="0">
+        <tr height="100px">
+            <td>
+                <center>
+                    <input type="text" id="searchInput" onkeyup="search()" name="title" placeholder="Search By Name" size="150px">
+                </center>
+            </td>
         </tr>
-    
-
-    <table height=100%, width=100%, border="1" cellspacing="0" cellpadding="0">
-        <tr>
-            <th>Id</th>
-            <th>User Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Action</th>
-        </tr>
-
-        <?php while ($row = mysqli_fetch_array(result)): ?>
-            <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['username']; ?></td>
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['address']; ?></td>
-                <td><a href="showDetails.php">Show Details</a></td>
-            </tr>
-        <?php endwhile; ?>
     </table>
-</form>
 
+    <br>
+    <br>
+    <br>
+
+    <center>
+        <font color="" face="" size="12">Search Results</font>
+        <br><br><br>
+        <hr color="" width="530px">
+        <br><br><br>
+
+        <table id="searchResults" width="100%" bgcolor="" border="1" cellspacing="0" cellpadding="">
+            <!-- Results will be displayed here dynamically using JavaScript -->
+        </table>
+
+        <br>
+        <br>
+        <br>
+    </center>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <center>
+        <tr height="40px">
+            <td colspan="2" align="center">
+                <footer>
+                    <a href="">About Us<br></a>
+                    <a href="">Helpline<br></a>
+                    <a href="">FAQ<br></a>
+                    <a href="">Terms and Condition<br></a>
+                    Copyright &copy; 2023
+                </footer>
+            </td>
+        </tr>
+    </center>
+
+    <script>
+        function search() {
+            let searchInput = document.getElementById('searchInput').value;
+
+            let xhttp = new XMLHttpRequest();
+            xhttp.open('POST', '../controller/search-controller.php', true);
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhttp.send('name=' + searchInput);
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    displayResults(JSON.parse(this.responseText));
+                }
+            };
+        }
+
+        function displayResults(results) {
+            let table = document.getElementById('searchResults');
+            table.innerHTML = ''; // Clear previous results
+
+            if (results.length > 0) {
+                // Create header row
+                let headerRow = table.insertRow(0);
+                headerRow.innerHTML = '<th>ID</th><th>User Name</th><th>Email</th><th>Address</th><th>Action</th>';
+
+                // Populate rows with results
+                for (let i = 0; i < results.length; i++) {
+                    let row = table.insertRow(i + 1);
+                    row.innerHTML = `<td>${results[i].id}</td><td>${results[i].username}</td><td>${results[i].email}</td><td>${results[i].address}</td><td><a href="showDetails.php?id=${results[i].id}&username=${results[i].username}&email=${results[i].email}&address=${results[i].address}">Show Details</a></td>`;
+                }
+            } else {
+                let messageRow = table.insertRow(0);
+                messageRow.innerHTML = '<td colspan="5">No results found.</td>';
+            }
+        }
+    </script>
 </body>
 </html>
-
-
-

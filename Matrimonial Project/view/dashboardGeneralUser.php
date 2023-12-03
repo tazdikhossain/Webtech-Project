@@ -46,7 +46,7 @@
                                 <li><a href="profile.php"> View Profile</a></li>
                                 <li><a href="edit.php">Edit Profile</a></li>
                                 <li><a href="picture.php">Change Profile Picture</a></li>
-                                <li><a href="changePassword.php">Change Password</a></li>
+                                <li><a href="setting.php">Settings</a></li>
                                 <!-- <li><a href="Number of CV Downloads">Number of CV Downloads</a></li>  -->
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>

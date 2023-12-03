@@ -88,10 +88,6 @@ if (isset($_REQUEST['submit'])) {
 
     //All validations pass, insert user data into database
     if ($isValidUsername && $isValidPassword && empty($nameError) && empty($usernameError) && empty($passwordError) && empty($confirmPasswordError) && empty($emailError) && empty($phoneNumberError) && empty($genderError)) {
-        $con = mysqli_connect('127.0.0.1', 'root', '', 'webtech');
-        $sql = "insert into users (username,password,email, role, phoneNumber,gender) values('{$username}','{$password}','{$email}','{$role}','{$phoneNumber}','{$gender}')";
-        $result = mysqli_query($con, $sql);
-
         if ($result) {
             header('location: ../view/login.php');
         } else {

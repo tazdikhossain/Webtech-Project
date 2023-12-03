@@ -1,127 +1,131 @@
 <?php
-require_once('../controller/sessionCheckUser.php');
+   require_once('../controller/sessionCheckUser.php');
 
+    require_once('../model/userModel.php');
+
+    $data=getId($_SESSION['id']);
+        $username=$data['username'];
 ?>
 
+
 <html lang="en">
-
 <head>
-    <title>Change Password</title>
+    <title>CHANGE PASSWORD</title>
 </head>
-
 <body>
-    <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="1">
-        <tr height="40px">
-            <td colspan="2">
-                <header>
+    <!-- <form method="post" action="../controller/changepasscheak.php" enctype=""> -->
+      <table border="1" cellpadding="0" cellspacing="0" align="center" width="1080px">
+            
+
+      <!-- top bar -->
+
+            <tr>
+                <td>
                     <table width="100%">
                         <tr>
                             <td>
-                                <img src="" alt=""> Logged in
+                                <img src="wed.png" alt="" height="60" width="60">
                             </td>
+
+                            <td align="center">
+                                <h2>Bibah.com</h2>
+                            </td>
+
                             <td align="right">
-                                <a href="searchBar.php">Search Bar</a>|    
+                                <h4><a href="../index.php">Home</a> | 
+								 logged as <a href="profile.php"> <?php echo $username;?> </a>|
+								<a href="../controller/logout.php">log out</a></h4>
                             </td>
+                           
                         </tr>
                     </table>
-                </header>
-            </td>
+                   
+                </td>
+            </tr>
 
 
 
 
+            <!-- body -->
 
-        </tr>
-        <tr>
-            <td width="220px">
-                <table height="100%" width="100%" border="0" cellspacing="0">
-                    <tr>
-                        <td height="200px">
-                            <h4>General User Account</h4>
-                            <hr width="200px">
-                            <ul>
-                                <li><a href="dashboardGeneralUser.php">Dashboard</a></li>
-                                <li><a href="profile.php">View Profile</a></li>
-                                <li><a href="edit.php">Edit Profile</a></li> 
-                                <li><a href="picture.php">Change Profile Picture</a></li>
-                                <li><a href="changePassword.php">Change Password</a></li>
-                                <!-- <li><a href="Number of CV Downloads">Number of CV Downloads</a></li>  -->
-                                <li><a href="logout.php">Logout</a></li>
-                            </ul>
+            <tr>
+			  <td>
+				<table border="1"   cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td width="25%">admin dashboard<hr>
+
+							<ul>
+							<li><a href="viewprofile.php">view Profile</a></li>
+							<li><a href="Editprofile.php">Edit Profile</a></li>
+							<li><a href="changepic.php">Change profile picture</a></li>
+							<li><a href="setting.php">SETTING</a></li>
+							</ul>
+						</td>
+
+						<td >
+                            <form method="post" action="../controller/changePasswordCheck.php" enctype="">
+						        <fieldset >
+                                        <legend>PROFILE</legend>
+                                        <table >
+                                            <tr>
+                                                <td>
+                                                    Current password:
+                                                </td>
+                                                <td>:
+                                                    <input type="password" name="currentpassword" value="" required/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    New password
+                                                </td>
+                                                <td>:
+                                                    <input type="password" name="newpassword" value="" required/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Retype New password
+                                                </td>
+                                                <td>:
+                                                    <input type="password" name="repassword" value="" required/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="250"><hr>
+                                                    <input type="submit" name="submit" value="submit" required/>
+                                                </td>
+                                            </tr>
+                                            
+                                        </table>
+                                        
+                                </fieldset> 
+                            </form>
                         </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </table>
+
+					</tr>
+
+				</table>
+				</td>
+            </tr>
+           
 
 
-            </td>
-            <td>
-                <form action="../controller/changePasswordCheck.php" method="post" >
-                    <fieldset>
-                        <legend>
-                            <b>Change Password</b>
-                        </legend>
-                        <table width="100%">
 
-                            <tr>
-                                <td>Current Password</td>
-                                <td>:<input type="password" name="currentPassword" value="">
-                                </td>
 
-                            </tr>
-                            <tr>
-                                <td>New Password</td>
-                                <td>:<input type="password" name="newPassword" value="">
-                                </td>
 
-                            </tr>
-                            <tr>
-                                <td>Retype New Password</td>
-                                <td>:<input type="password" name="confirmPassword" value="">
-                                </td>
+            <!-- bottom bar -->
 
-                            </tr>
-                            <tr>
-                                <td>
+            <tr align="center">
+                <td>
+                        <a href="viewT&C.php">Terms & Conditions</a> |
+                        <a href="privacyPolicy.html">Privacy Policy</a> |
+                        <a href="viewabout.php">About Us</a><br>
+                        Copyright &copy; 2023
+            </tr>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <hr>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="submit" value="submit" name="submit" />
 
-                                </td>
-                                <td>
-
-                            </tr>
-                        </table>
-                    </fieldset>
-                </form>
-            </td>
-
-        </tr>
-
-        <tr height="40px">
-            <td colspan="2" align="center">
-
-                <footer>
-                    <a href="">About Us<br></a>
-                    <a href="">Helpline<br></a>
-                    <a href="">FAQ<br></a>
-                    <a href="">Terms and Condition<br></a>
-                    Copyright &copy; 2023
-                </footer>
-            </td>
-        </tr>
-    </table>
-
-</body>
-
+       </table>
+    <!--</form>-->
+   </body>
 </html>

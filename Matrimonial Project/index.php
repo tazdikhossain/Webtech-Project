@@ -53,10 +53,10 @@
             <td colspan="2">
                 <hr>
                 <footer align="center">    
-                    <a href="">About Us<br></a>
+                    <a href="view/viewabout.php">About Us<br></a>
                     <a href="">Helpline<br></a>
                     <a href="">FAQ<br></a>
-                    <a href="">Terms and Condition<br></a>
+                    <a href="view/viewT&C.php">Terms and Condition<br></a>
                     Copyright &copy; 2023
                 </footer>
             </td>

@@ -88,6 +88,20 @@ function deleteUser($id)
     return true;
 }
 
+
+function getId($id)
+{
+    $con=getconnection();
+    $sql="select * from users where id='{$id}'";
+    $result=mysqli_query($con,$sql);
+    $row = mysqli_fetch_assoc($result);
+    if ($row) {
+        return $row;
+    } else {
+        return null;
+    }
+}
+
 function updatePassword($id, $password)
 {
     $con = getConnection();
@@ -116,14 +130,14 @@ function useremail($email)
 }
 
 
-// Function to connect and execute the query
-function filterTable($query) {
-    $con = getConnection();
-    $filter_Result = mysqli_query($con, $query);
-    return $filter_Result;
+// // Function to connect and execute the query
+// function filterTable($query) {
+//     $con = getConnection();
+//     $filter_Result = mysqli_query($con, $query);
+//     return $filter_Result;
 
 
-}
+// }
 
 
 function getHost($id)

@@ -1,50 +1,39 @@
-<?php
-require_once('../model/userModel.php');
-require_once('../controller/sessionCheckUser.php');
-
-
-
-if (isset($_REQUEST['search'])) {
-    $valueToSearch = $_REQUEST['valueToSearch'];
-    // search in all table columns using concat MySQL function
-    $query = "SELECT * FROM `search` WHERE CONCAT(`id`, `username`, `email`,`address` ) LIKE '%" . $valueToSearch . "%'";
-    $search_result = filterTable($query);
-} else {
-    $query = "SELECT * FROM `search`";
-    $search_result = filterTable($query);
-}
-?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 <html lang="en">
 
 <head>
-    <title>Login</title>
+    <title>Registration</title>
 </head>
 
 <body>
     <table width="100%" height="100%">
-
+        
         <tr height="60px">
-            <header>
-                <!-- <td>
+            <!-- <header>
+                <td>
                     <img src="" alt=""> <a href="index.php">Back</a>
                 </td>
                 <td align="right">
                     <a href="index.php">Home</a>|
-                    <a href="registration.php">Registration</a>
+                    <a href="login.php">Login</a>
                 </td>
-                </td> -->
-            </header>            
+                </td>
+            </header> -->
         </tr>
 
 
         <tr>
             <td colspan="2" height="2px">
-
-                <hr>
+                <!-- <hr> -->
             </td>
         </tr>
-
 
         <tr>
             <td colspan="2" align="center">
@@ -52,35 +41,77 @@ if (isset($_REQUEST['search'])) {
                     <table width="700px" >
                         <tr>
                             <td>
-                                <form action="" method="post" enctype="">
+                                <form method="post" action="">
                                     <fieldset>
-
                                         <legend>
-                                            Login
+                                            Registration
                                         </legend>
 
                                         <table width="100%">
 
-                                        <?php while ($row = mysqli_fetch_array($search_result)): ?>
                                             <tr>
-                                                <td>User Name</td>
+                                                <td>Name</td>
                                                 <td>:
-                                                    <?php echo $row['username']; ?>
+                                                    <input type="text" name="name" value="John Ahmed">
+                                                    
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
+                                                    <hr>
                                                 </td>
                                             </tr>
 
                                             <tr>
                                                 <td>Email</td>
                                                 <td>:
-                                                    <?php echo $row['email']; ?>
+                                                    <input type="email" name="email" value="john@gmail.com">
                                                 </td>
                                             </tr>
+
                                             <tr>
                                                 <td colspan="2">
                                                     <hr>
                                                 </td>
                                             </tr>
-                                            <?php endwhile; ?>
+
+                                            <tr>
+                                                <td>Phone No</td>
+                                                <td>:
+                                                    <input type="text" name="phoneNumber" value="01332323222">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
+                                                    <hr>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Gender</td>
+                                                <td>:
+                                                    <input type="text" name="Gender" value="Male">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
+                                                    <hr>
+                                                </td>
+                                            </tr>
+
+
+                                            
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <center><a href=""> <button> Download CV </button> </a></center>
+                                                    </td>
+                                                </tr>
+                                            
+                                            
+
                                         </table>
 
                                     </fieldset>
@@ -91,18 +122,5 @@ if (isset($_REQUEST['search'])) {
                 </main>
             </td>
         </tr>
-
-
-        <tr height="60px">
-            <td colspan="2">
-                <hr>
-
-            </td>
-        </tr>
-
-
-    </table>
-
 </body>
-
 </html>
