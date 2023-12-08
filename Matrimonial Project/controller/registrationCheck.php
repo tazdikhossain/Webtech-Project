@@ -1,5 +1,4 @@
 <?php
-//session_start();
 
 // initialization
 $isValidUsername = true;
@@ -13,16 +12,17 @@ $emailError = "";
 $phoneNumberError = "";
 $genderError = "";
 
-if (isset($_REQUEST['submit'])) {
+
+if (isset($_POST['submit'])) {
 
     // Data collect from registration form
-    $name = $_REQUEST['name'];
-    $username = $_REQUEST['username'];
-    $password = $_REQUEST['password'];
-    $confirmPassword = $_REQUEST['confirmPassword'];
-    $email = $_REQUEST['email'];
-    $phoneNumber = $_REQUEST['phoneNumber'];
-    $gender = $_REQUEST['gender'];
+    $name = $_POST['name'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+    $email = $_POST['email'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
 
     // Name validation
     if (empty($name)) {
@@ -37,7 +37,7 @@ if (isset($_REQUEST['submit'])) {
             $char = $username[$i];
 
             if (!ctype_alnum($char) && $char != '.' && $char != '-' && $char != '_') {
-                $usernameError = "Username can contain alphanumeric characters, period, dash, or underscore only";
+                $usernameError = "Username must contain alphanumeric characters, period, dash, or underscore only";
                 break;
             }
         }
@@ -83,7 +83,7 @@ if (isset($_REQUEST['submit'])) {
         $genderError = "Please select your gender";
     }
 
-    // If all validations pass, insert user data into database
+    // All validations pass, insert user data into the database
     if ($isValidUsername && $isValidPassword && empty($nameError) && empty($usernameError) && empty($passwordError) && empty($confirmPasswordError) && empty($emailError) && empty($phoneNumberError) && empty($genderError)) {
         $con = mysqli_connect('127.0.0.1', 'root', '', 'webtech');
         $sql = "insert into users (username,password,email, role, phoneNumber,gender) values('{$username}','{$password}','{$email}','user','{$phoneNumber}','{$gender}')";

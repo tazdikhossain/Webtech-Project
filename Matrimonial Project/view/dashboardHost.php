@@ -47,8 +47,10 @@
                                 <li><a href="HostEdit.php">Edit Profile</a></li>
                                 <li><a href="HostPicture.php">Change Profile Picture</a></li>
                                 <li><a href="settingHost.php">Settings</a></li>
-                                <li><a href="tc.php">Write Blog and Advices</a></li>
-                                <li><a href="">Write Event Management</a></li>
+                                <li><a href="tc.php">Terms and Condition</a></li>
+                                <li><a href="blog.php">Write Blog and Advices</a></li>
+                                <li><a href="eventManagement.php">Write Event Management</a></li>
+                                <li><a href="success.php">Success Story</a></li>
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>
 

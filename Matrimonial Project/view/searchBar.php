@@ -7,16 +7,44 @@ require_once('../controller/sessionCheckUser.php');
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Search Biodata</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input {
+            width: 80%;
+            padding: 8px;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body bgcolor="">
-    <table width="100%" bgcolor="" border="0" cellspacing="0" cellpadding="0">
+
+<body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr height="100px">
             <td>
                 <center>
-                    <input type="text" id="searchInput" onkeyup="search()" name="title" placeholder="Search By Name" size="150px">
+                    <input type="text" id="searchInput" onkeyup="search()" name="title" placeholder="Search By Name">
                 </center>
             </td>
         </tr>
@@ -27,12 +55,12 @@ require_once('../controller/sessionCheckUser.php');
     <br>
 
     <center>
-        <font color="" face="" size="12">Search Results</font>
+        <font size="12">Search Results</font>
         <br><br><br>
-        <hr color="" width="530px">
+        <hr width="80%">
         <br><br><br>
 
-        <table id="searchResults" width="100%" bgcolor="" border="1" cellspacing="0" cellpadding="">
+        <table id="searchResults" width="100%" border="1" cellspacing="0" cellpadding="10">
             <!-- Results will be displayed here dynamically using JavaScript -->
         </table>
 
@@ -44,28 +72,15 @@ require_once('../controller/sessionCheckUser.php');
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <center>
-        <tr height="40px">
-            <td colspan="2" align="center">
-                <footer>
-                    <a href="">About Us<br></a>
-                    <a href="">Helpline<br></a>
-                    <a href="">FAQ<br></a>
-                    <a href="">Terms and Condition<br></a>
-                    Copyright &copy; 2023
-                </footer>
-            </td>
-        </tr>
+        <footer>
+            <a href="">About Us<br></a>
+            <a href="">Helpline<br></a>
+            <a href="">FAQ<br></a>
+            <a href="">Terms and Condition<br></a>
+            Copyright &copy; 2023
+        </footer>
     </center>
 
     <script>
@@ -105,4 +120,6 @@ require_once('../controller/sessionCheckUser.php');
         }
     </script>
 </body>
+
 </html>
+

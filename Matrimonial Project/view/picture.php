@@ -1,13 +1,68 @@
 <?php
-    require_once('../controller/sessionCheckUser.php'); 
-    require_once('../model/userModel.php'); // This line requires the userModel.php file, which contains the functions for managing users.
-    $data= getUser($_SESSION['id']);
+    require_once('../controller/sessionCheckUser.php');
+    require_once('../model/userModel.php');
+    $user = getUser($_SESSION['id']);
 ?>
 
 <html lang="en">
 
 <head>
-    <title>Profile Picture</title>
+    <title>Change Profile Picture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            vertical-align: top;
+            padding: 10px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header a:hover {
+            background-color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        fieldset {
+            margin: 20px;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,17 +73,16 @@
                     <table width="100%">
                         <tr>
                             <td>
-                                <img src="" alt=""> Logged in
+                                <img src="" alt="Logo"> Logged in
                             </td>
                             <td align="right">
-                                <a href="searchBar.php">Search Bar</a>|    
+                                <a href="searchBar.php">Search Bar</a> |
                             </td>
                         </tr>
                     </table>
                 </header>
             </td>
         </tr>
-
 
         <tr>
             <td width="220px">
@@ -43,7 +97,6 @@
                                 <li><a href="edit.php">Edit Profile</a></li>
                                 <li><a href="picture.php">Change Profile Picture</a></li>
                                 <li><a href="changePassword.php">Change Password</a></li>
-                                <!-- <li><a href="Number of CV Downloads">Number of CV Downloads</a></li>  -->
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>
                         </td>
@@ -53,7 +106,6 @@
                     </tr>
                 </table>
             </td>
-
 
             <td>
                 <form method="post" action="../controller/fileCheck.php" enctype="multipart/form-data">
@@ -65,16 +117,11 @@
 
                             <tr>
                                 <td>
-                                    <img src="../upload/<?php echo $data['image']; ?>" alt="pfp" width="200p">
+                                    <img src="../upload/<?php echo $user['image']; ?>" alt="Profile Picture" width="200">
                                 </td>
-
-
                             </tr>
                             <tr>
-
-                                <td><input type="file" name="myfile" value="">
-                                </td>
-
+                                <td><input type="file" name="myfile" value=""></td>
                             </tr>
                             <tr>
                                 <td colspan="2">
@@ -82,20 +129,15 @@
                                 </td>
                             </tr>
 
-
                             <tr>
                                 <td>
-                                    <input type="submit" value="submit" name="submit" />
-
+                                    <input type="submit" value="Submit" name="submit" />
                                 </td>
-                                <td>
-
                             </tr>
                         </table>
                     </fieldset>
                 </form>
             </td>
-
         </tr>
 
         <tr height="40px">

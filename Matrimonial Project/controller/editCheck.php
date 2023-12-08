@@ -1,20 +1,17 @@
 <?php
-require_once("../model/userModel.php");
 require_once('../controller/sessionCheckUser.php');
+require_once('../model/userModel.php');
 
 if (
-    isset($_REQUEST['username']) &&
-    isset($_REQUEST['email']) &&
-    isset($_REQUEST['gender']) &&
-    isset($_REQUEST['phoneNumber']) &&
-    isset($_SESSION['id'])
+    isset($_POST['username']) &&
+    isset($_POST['email']) &&
+    isset($_POST['phoneNumber']) &&
+    isset($_POST['id'])
 ) {
-
-    $username = $_REQUEST['username'];
-    $email = $_REQUEST['email'];
-    $id = $_SESSION['id'];
-    $gender = $_REQUEST['gender'];
-    $phoneNumber = $_REQUEST['phoneNumber'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $id = $_POST['id'];
+    $phoneNumber = $_POST['phoneNumber'];
 
     // Validate username
     if (empty($username) || strlen($username) < 2 || !isValidUsername($username)) {
@@ -34,9 +31,9 @@ if (
         exit;
     }
 
-    $user = ['username' => $username, 'email' => $email, 'gender' => $gender, 'phoneNumber' => $phoneNumber, "id" => $id];
+    $user = ['username' => $username, 'email' => $email, 'phoneNumber' => $phoneNumber, "id" => $id];
     updateUser($user);
-    header("location: ../view/dashboardGeneralUser.php");
+    header("location: ../view/edit.php");
     exit;
 } else {
     header("location: ../view/edit.php");

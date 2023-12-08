@@ -8,6 +8,87 @@
     <title>Login</title>
 </head>
 
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        fieldset {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            width: 80%; /* Reduced width */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: calc(100% - 16px); /* Adjusted width */
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin: 0 5px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+        }
+    </style>
+
 <body>
     <table width="100%" height="100%">
 

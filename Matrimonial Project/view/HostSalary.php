@@ -1,12 +1,52 @@
 <?php 
-   require_once('../controller/sessionCheckAdmin.php');
-   require_once('../model/userModel.php');
-   $host = getAllHost();
+    require_once('../controller/sessionCheckAdmin.php');
+    require_once('../model/salaryModel.php');
+    $host = getAllHost();
 ?>
 
 <html lang="en">
 <head>
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title Here</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
 
@@ -14,14 +54,14 @@
 
     <br><br>
 
-    <table border="1" width=100%,  cellspacing="0" cellpadding="0">
+    <table>
         <tr>
-            <td>ID</td>
-            <td>USER NAME</td>
-            <td>Role</td>
-            <td>Gender</td>
-            <td>Salary</td>
-            <td>Action</td>
+            <th>ID</th>
+            <th>USER NAME</th>
+            <th>Role</th>
+            <th>Gender</th>
+            <th>Salary</th>
+            <th>Action</th>
         </tr>
 
 <?php for($i=0; $i<count($host); $i++){ ?>
@@ -35,7 +75,6 @@
                 <a href="HostSalaryEdit.php?id=<?=$host[$i]['id']?>"> EDIT </a> |
             </td>
         </tr>
-
 <?php } ?>
     </table>
 </body>

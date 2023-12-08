@@ -1,23 +1,111 @@
 <?php
+require_once('../controller/sessionCheckUser.php');
+require_once('../model/userModel.php');
 
-require_once('../controller/sessionCheckUser.php'); 
-require_once('../model/userModel.php'); 
-
-$user = getUser($_SESSION['id']); 
-
-
+$user = getUser($_SESSION['id']);
 ?>
 
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            vertical-align: top;
+            padding: 10px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header a:hover {
+            background-color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        hr {
+            border-top: 1px solid #ddd;
+        }
+    </style>
 </head>
 
 <body>
-    <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="1">
-
+    <table>
         <tr height="40px">
             <td colspan="2">
                 <header>
@@ -27,14 +115,13 @@ $user = getUser($_SESSION['id']);
                                 <img src="" alt=""> Logged in
                             </td>
                             <td align="right">
-                                <a href="searchBar.php">Search Bar</a>|    
+                                <a href="searchBar.php">Search Bar</a> |
                             </td>
                         </tr>
                     </table>
                 </header>
             </td>
         </tr>
-
 
         <tr>
             <td width="220px">
@@ -46,216 +133,146 @@ $user = getUser($_SESSION['id']);
                             <ul>
                                 <li><a href="dashboardGeneralUser.php">Dashboard</a></li>
                                 <li><a href="profile.php">View Profile</a></li>
-                                <li><a href="edit.php">Edit Profile</a></li> 
+                                <li><a href="edit.php">Edit Profile</a></li>
                                 <li><a href="picture.php">Change Profile Picture</a></li>
                                 <li><a href="changePassword.php">Change Password</a></li>
-                                <!-- <li><a href="Number of CV Downloads">Number of CV Downloads</a></li>  -->
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>
-
-
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                     </tr>
                 </table>
-
             </td>
 
-
             <td>
-                <form id="editForm" method="post" action="../controller/editCheck.php" enctype="">
+                <form id="editForm" method="post" action="../controller/editCheck.php">
                     <fieldset>
-                        <legend>
-                            <b>Edit Profile</b>
-                        </legend>
+                        <legend><b>Edit Profile</b></legend>
                         <table width="100%">
-                            <input type="hidden" name="id" value="<?= $user['id']  ?>" 
-            
-                            
+                            <input type="hidden" name="id" value="<?= $user['id'] ?>" />
+
                             <tr>
                                 <td>Name</td>
-                                <td>:<input type="name" id="username" name="username" value="<?=$user['username']  ?>" />
-                                </td>
-
+                                <td>:<input type="text" id="username" name="username" value="<?= $user['username'] ?>" /></td>
                             </tr>
 
-
                             <tr>
-                                <td colspan="2">
-                                    <hr>
-                                </td>
+                                <td colspan="2"><hr></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>:<input type="email" id="email" name="email" value="<?=$user['email']  ?>" />
-                                    
-                                </td>
-
+                                <td>:<input type="email" id="email" name="email" value="<?= $user['email'] ?>" /></td>
                             </tr>
-
 
                             <tr>
-                                <td colspan="2">
-                                    <hr>
-                                </td>
+                                <td colspan="2"><hr></td>
                             </tr>
-                            <!-- <tr>
-                                <td>Gender</td>
-                                <td>:<input type="text" name="gender" value="" />
-                                    
-                                    
-                                </td>
 
-                            </tr>
-                    
-
-                            <tr>
-                                <td colspan="2">
-                                    <hr>
-                                </td>
-                            </tr> -->
                             <tr>
                                 <td>Phone Number</td>
-                                <td>:<input type="text" id="phoneNumber" name="phoneNumber" value="<?=$user['phoneNumber']  ?>" />
-                                
-                                    
-                                </td>
-
-
+                                <td>:<input type="text" id="phoneNumber" name="phoneNumber" value="<?= $user['phoneNumber'] ?>" /></td>
                             </tr>
-
-
 
                             <tr>
-                                <td colspan="2">
-                                    <hr>
-                                </td>
+                                <td colspan="2"><hr></td>
                             </tr>
-
 
                             <tr>
                                 <td>
-                                    <input type="submit" value="submit" name="submit" onclick=" validateForm()" />
-
+                                    <input type="submit" value="Submit" name="submit" onclick="return validateForm()" />
                                 </td>
-                                <td>
-
+                                <td></td>
                             </tr>
-
-                            <script>
-
-                                function validateForm() {
-                                    let username = document.getElementById('username').value;
-                                    let email = document.getElementById('email').value;
-                                    let phoneNumber = document.getElementById('phoneNumber').value;
-
-                                    if (isEmpty(username)) {
-                                        alert('Username cannot be empty');
-                                        return false;
-                                    }
-
-                                    if (isEmpty(email)) {
-                                        alert('Email cannot be empty');
-                                        return false;
-                                    }
-
-                                    if (isEmpty(phoneNumber)) {
-                                        alert('Phone Number cannot be empty');
-                                        return false;
-                                    }
-
-                                    // Validate username
-                                    if (!isValidUsername(username)) {
-                                        alert('Invalid Username. Please check the requirements.');
-                                        return false;
-                                    }
-
-                                    // Validate phone number
-                                    if (!isValidPhoneNumber(phoneNumber)) {
-                                        alert('Invalid Phone Number. Please try again.');
-                                        return false;
-                                    }
-
-                                    submitForm();
-                                    return false;
-                                }
-
-                                function isEmpty(value) {
-                                    return value === '';
-                                }
-
-                                function isValidUsername(username) {
-                                    // Username must contain at least two characters
-                                    if (username.length < 2) {
-                                        return false;
-                                    }
-
-                                    // Username can contain alphanumeric characters, period, dash, or underscore only
-                                    for (let i = 0; i < username.length; i++) {
-                                        let char = username[i];
-                                        if (!((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || (char >= '0' && char <= '9') || char === '.' || char === '-' || char === '_')) {
-                                            return false;
-                                        }
-                                    }
-
-                                    return true;
-                                }
-
-                                function isValidPhoneNumber(phoneNumber) {
-                                    // Specific phone number validation
-                                    return phoneNumber.length === 11 && phoneNumber[0] === '0' && phoneNumber[1] === '1';
-                                }
-
-                                function submitForm() {
-                                    let xhttp = new XMLHttpRequest();
-                                    let formData = new FormData(document.getElementById('editForm'));
-
-                                    xhttp.open('POST', '../controller/editCheck.php', true);
-                                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                                    xhttp.send('username=' + username)
-                                    xhttp.send('email=' + email)
-                                    xhttp.send('phoneNumber=' + phoneNumber)
-                                    xhttp.onreadystatechange = function () {
-                                        if (this.readyState == 4 && this.status == 200) {
-                                            document.getElementById('head').innerHTML = this.responseText;
-                                        }
-                                    };
-                                }
-
-                            </script>
-
-
-
-
                         </table>
                     </fieldset>
                 </form>
             </td>
-
         </tr>
-
-        <tr height="40px">
-            <td colspan="2" align="center">
-                <footer>
-                    <a href="">About Us<br></a>
-                    <a href="">Helpline<br></a>
-                    <a href="">FAQ<br></a>
-                    <a href="">Terms and Condition<br></a>
-                    Copyright &copy; 2023
-                </footer>
-            </td>
-        </tr>
-        
     </table>
+    <script>
+        function validateForm() {
+            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
+            let phoneNumber = document.getElementById('phoneNumber').value;
 
+            if (isEmpty(username)) {
+                alert('Username cannot be empty');
+                return false;
+            }
 
+            if (isEmpty(email)) {
+                alert('Email cannot be empty');
+                return false;
+            }
 
+            if (isEmpty(phoneNumber)) {
+                alert('Phone Number cannot be empty');
+                return false;
+            }
+
+            // Validate username
+            if (!isValidUsername(username)) {
+                alert('Invalid Username. Please check the requirements.');
+                return false;
+            }
+
+            // Validate phone number
+            if (!isValidPhoneNumber(phoneNumber)) {
+                alert('Invalid Phone Number. Please try again.');
+                return false;
+            }
+
+            // Call the Ajax function
+            submitForm();
+
+            // Prevent form submission
+            return false;
+        }
+
+        function isEmpty(value) {
+            return value === '';
+        }
+
+        function isValidUsername($username) {
+    // Username must contain at least two characters
+    if (strlen($username) < 2) {
+        return false;
+    }
+
+    // Username can contain alphanumeric characters, period, dash, or underscore only
+    for ($i = 0; $i < strlen($username); $i++) {
+        $char = $username[$i];
+        if (!((ctype_alnum($char) || $char === '.' || $char === '-' || $char === '_'))) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function isValidPhoneNumber($phoneNumber) {
+    // Specific phone number validation
+    return strlen($phoneNumber) === 11 && $phoneNumber[0] === '0' && $phoneNumber[1] === '1';
+}
+
+        function submitForm() {
+            let xhttp = new XMLHttpRequest();
+            let formData = new FormData(document.getElementById('editForm'));
+
+            xhttp.open('POST', '../controller/editCheck.php', true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(formData);
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Handle the response if needed
+                    console.log(this.responseText);
+                }
+            };
+        }
+    </script>
 </body>
-
-
-
-
 
 </html>
